@@ -8,13 +8,41 @@
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Nunito:300,400|Open+Sans&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="loader.js"></script>
+
 
 
 
 </head>
 
 <body>
+  <div class="preloader">
+    <img src="img/loader.svg" alt="spinner">
+  </div>
+
+  <script>
+  const preloader = document.querySelector('.preloader');
+
+  const fadeEffect = setInterval(() => {
+    // if we don't set opacity 1 in CSS, then
+    // it will be equaled to "" -- that's why
+    // we check it, and if so, set opacity to 1
+    if (!preloader.style.opacity) {
+      preloader.style.opacity = 1;
+    }
+    if (preloader.style.opacity > 0) {
+      preloader.style.opacity -= 0.1;
+    } else {
+      clearInterval(fadeEffect);
+    }
+  }, 100);
+
+  window.addEventListener('load', fadeEffect);
+  </script>
+
+
 <div class="ui container right alignment fixed inverted menu">
    <div class="ui list container nav">
     <ul>
